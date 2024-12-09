@@ -1,0 +1,39 @@
+{
+  "name": "@fehujs/validator",
+  "version": "0.1.0",
+  "description": "Object validator for requests",
+  "main": "build/index.js",
+  "type": "module",
+  "private": false,
+  "files": [
+    "./build/**/*",
+    "README.md",
+    "LICENCE"
+  ],
+  "exports": {
+    ".": "./build/index.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "build:types": "tsc -d --declarationDir build --declarationMap --emitDeclarationOnly",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fehujs/validator.git"
+  },
+  "keywords": [
+    "validator"
+  ],
+  "author": "Pascal LLEONART",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fehujs/validator/issues"
+  },
+  "homepage": "https://github.com/fehujs/validator#readme",
+  "devDependencies": {
+    "@fehujs/tsconfig": "^1.0.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.2"
+  }
+}
