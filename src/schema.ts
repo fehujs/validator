@@ -2,12 +2,12 @@ import * as rules from "./rules"
 import { Fields, ParsingResult, Rule } from "./types"
 
 
-async function getRule(name: string, customRulesFilePath: string, ...args: any[]): Promise<Rule> {
+async function getRule(name: string, ...args: any[]): Promise<Rule> {
     if (name in rules) {
         const func = (rules as any)[name]
         return func(...args)
     } else {
-        const customRules = await rules.importCustomRules(customRulesFilePath)
+        const customRules = await rules.importCustomRules()
         if (customRules && name in customRules) {
             const func = (customRules as any)[name]
             return func(...args)
@@ -17,7 +17,7 @@ async function getRule(name: string, customRulesFilePath: string, ...args: any[]
 }
 
 export default class Schema {
-    private constructor(private fields: Fields, private customRulesFilePath: string, customRules: any) {
+    private constructor(private fields: Fields, customRules: any) {
         let errors: string[] = []
 
         for (const field of Object.keys(fields)) {
@@ -38,9 +38,9 @@ export default class Schema {
      * @param fields 
      * @returns 
      */
-    public static async create(fields: Fields, customRulesFilePath: string) {
-        const customRules = await rules.importCustomRules(customRulesFilePath)
-        return new Schema(fields, customRulesFilePath, customRules)
+    public static async create(fields: Fields) {
+        const customRules = await rules.importCustomRules()
+        return new Schema(fields, customRules)
     }
 
     public async parse<T>(data: {[key: string]: string | number}): Promise<ParsingResult<T>> {
@@ -49,7 +49,7 @@ export default class Schema {
         for (const field of Object.keys(this.fields)) {
             if (data[field]) {
                 for (const ruleName of Object.keys(this.fields[field])) {
-                    const rule = await getRule(ruleName, this.customRulesFilePath, data[field], ...this.fields[field][ruleName])
+                    const rule = await getRule(ruleName, data[field], ...this.fields[field][ruleName])
                     const result = rule.cb()
 
                     /** 

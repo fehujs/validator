@@ -1,8 +1,10 @@
-# validator
+# @fehujs/validator
 
 This module permits you to parse objects (like request, body) to verify if its processable.
 
 ## Usage
+
+Note about running: if you want to use the custom rules system, please make sure that your current working directory is the root of your project.
 
 Here's a sign up view process using the validator module:
 
@@ -108,7 +110,7 @@ You can set your schemas in files contained into `src/app/validators`.
 
 If you want to create a custom rule, you can create a file named `rules.ts` into `src/app/validators`.
 
-Nota: you can decide to put it somewhere else but you'll need to update the path in your app config.
+Nota (this isn't supported yet): you can decide to put it somewhere else but you'll need to update the path in your app config.
 
 Then, begin to implement your rules!
 

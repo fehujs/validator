@@ -1,11 +1,12 @@
+import { cwd } from "process"
 import type { Rule } from "./types"
 
 
 /** importing custom rules */
 
-export async function importCustomRules(customRulesFilePath: string) {
+export async function importCustomRules() {
     try {
-        return await import(customRulesFilePath)
+        return await import(cwd() + "/app/validators/rules.js")
     } catch (err) {  /** no custom rules set */
     }
 }

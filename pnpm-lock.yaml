@@ -11,6 +11,9 @@ importers:
       '@fehujs/tsconfig':
         specifier: ^1.0.0
         version: 1.0.0
+      '@types/node':
+        specifier: ^22.10.2
+        version: 22.10.2
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -167,6 +170,9 @@ packages:
   '@fehujs/tsconfig@1.0.0':
     resolution: {integrity: sha512-7GIKqf6Gslo8xbdXJmhOqHvt3bDnNx1iORkKBsbgy7qygRuoBxTVRarwYEY9ZIlmHlF9MjocVMmuV89BStVXww==}
 
+  '@types/node@22.10.2':
+    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
+
   esbuild@0.24.0:
     resolution: {integrity: sha512-FuLPevChGDshgSicjisSooU0cemp/sGXR841D5LHMB7mTVOmsEHcAxaH3irL53+8YDIeVNQEySh4DaYU/iuPqQ==}
     engines: {node: '>=18'}
@@ -176,6 +182,9 @@ packages:
     resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
 snapshots:
 
@@ -253,6 +262,10 @@ snapshots:
 
   '@fehujs/tsconfig@1.0.0': {}
 
+  '@types/node@22.10.2':
+    dependencies:
+      undici-types: 6.20.0
+
   esbuild@0.24.0:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.24.0
@@ -281,3 +294,5 @@ snapshots:
       '@esbuild/win32-x64': 0.24.0
 
   typescript@5.7.2: {}
+
+  undici-types@6.20.0: {}
