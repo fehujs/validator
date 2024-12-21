@@ -1,6 +1,6 @@
 {
   "name": "@fehujs/validator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Object validator for requests",
   "main": "build/index.js",
   "type": "module",
