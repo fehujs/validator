@@ -61,6 +61,8 @@ export default class Schema {
                     }
 
                     if (!result) {
+                        if (!errors[field]) errors[field] = ""
+
                         errors[field] += `Invalid ${field}: ${rule.errMsg}`
                     }
                 }
@@ -69,16 +71,9 @@ export default class Schema {
                 if (Object.keys(this.fields[field]).includes("optional")) {
 
                     /** try to get the default value and set it if found */
-                    if (this.fields[field]["optional"][0]) {
-
-                        const rule = rules.optional("", this.fields[field]["optional"][0].toString())
-                        data[field] = rule.cb() as (string | number)
-
-                    } else {
-                        data[field] = ""
-                    }
+                    data[field] = this.fields[field]["optional"][0] ?? ""
                 } else {
-                    errors[field] = `${field} needed but not obtained.`
+                    errors[field] = `${field} needed but not received.`
                 }
             }
         }

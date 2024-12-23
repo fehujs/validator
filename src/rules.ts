@@ -55,7 +55,7 @@ export const optional = (str: string, defaultStr?: string) => {
         name: "Optional string",
         errMsg: "",
         cb: () => {
-            return str ? str : ( defaultStr ? defaultStr : null)
+            return str ?? (defaultStr ?? null)
         }
     } as Rule
 }
